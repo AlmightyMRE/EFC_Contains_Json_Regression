@@ -1,6 +1,7 @@
 ﻿using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 
 using var ctx = new MyContext();
 
@@ -68,11 +69,9 @@ void Setup()
     biggestLicenses = biggestLicenses[1..];
     var biggestLicenseIds = biggestLicenses.Select(x => x.Id).ToList();
 
-    foreach (var customer in ctx.Customers.Where(x => biggestLicenseIds.Contains(x.ProfileId)).ToList())
-    { 
-        customer.Profile = biggest;
-        customer.ProfileId = biggest.Id;
-    }
+    ctx.Customers
+        .Where(x => biggestLicenseIds.Contains(x.ProfileId))
+        .ExecuteUpdate(x => x.SetProperty(y => y.Profile, biggest));
 
     ctx.SaveChanges();
 }
