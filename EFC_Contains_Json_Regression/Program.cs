@@ -134,7 +134,7 @@ public class Customer
     public DateTime LastEdited { get; set; } = Random.Shared.RandomDateTime();
     public bool Locked { get; set; } = Random.Shared.Next(0, 2) == 1;
 
-    // Add some data with varchar(max), including some contents
+    // Add some data with nvarchar(max), including some contents
     public string Name1 { get; set; } = Guid.NewGuid().ToString();
     public string Name2 { get; set; } = Guid.NewGuid().ToString();
     public string Name3 { get; set; } = Guid.NewGuid().ToString();
