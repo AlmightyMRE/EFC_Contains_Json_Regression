@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34219.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC_Contains_Json_Regression", "EFC_Contains_Json_Regression\EFC_Contains_Json_Regression.csproj", "{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5F7B1E8-5C8E-411B-86FA-46D74678A10C}
+	EndGlobalSection
+EndGlobal
