@@ -27,7 +27,9 @@ void DoTheThing()
         .Select(x => new { x.Id, x.LastEdited, x.Name15 })
         .Skip(0)
         .Take(25);
+
     Console.WriteLine(query.ToQueryString());
+
     var people = query.ToList();
 }
 void Setup()
