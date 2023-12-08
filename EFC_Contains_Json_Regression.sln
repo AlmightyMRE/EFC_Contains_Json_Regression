@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34219.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFC_Contains_Json_Regression", "EFC_Contains_Json_Regression\EFC_Contains_Json_Regression.csproj", "{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFC_Contains_Json_Regression", "EFC_Contains_Json_Regression\EFC_Contains_Json_Regression.csproj", "{B36AB379-ACAA-4285-A00F-E7C2B3CBDF7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,322 @@
+<ShowPlanXML xmlns="http://schemas.microsoft.com/sqlserver/2004/07/showplan" Version="1.564" Build="16.0.1000.6">
+	<BatchSequence>
+		<Batch>
+			<Statements>
+				<StmtSimple StatementText="SELECT [c].[Id], [c].[LastEdited], [c].[Name15]&#xd;&#xa;FROM [Customers] AS [c]&#xd;&#xa;INNER JOIN [Profiles] AS [p] ON [c].[ProfileId] = [p].[Id]&#xd;&#xa;WHERE [p].[Id] IN (341, 231, 258)&#xd;&#xa;ORDER BY [c].[LastEdited] DESC&#xd;&#xa;OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" StatementId="1" StatementCompId="3" StatementType="SELECT" StatementSqlHandle="0x09002BC35B720316B462B4BABD680B71918B0000000000000000000000000000000000000000000000000000" DatabaseContextSettingsId="4" ParentObjectId="0" StatementParameterizationType="0" RetrievedFromCache="true" StatementSubTreeCost="25.4776" StatementEstRows="100" SecurityPolicyApplied="false" StatementOptmLevel="FULL" QueryHash="0x95CBD1CBBE4C5FE3" QueryPlanHash="0x1DFFBFCF95BA064F" CardinalityEstimationModelVersion="160">
+					<StatementSetOptions QUOTED_IDENTIFIER="true" ARITHABORT="true" CONCAT_NULL_YIELDS_NULL="true" ANSI_NULLS="true" ANSI_PADDING="true" ANSI_WARNINGS="true" NUMERIC_ROUNDABORT="false">
+					</StatementSetOptions>
+					<QueryPlan DegreeOfParallelism="1" CachedPlanSize="40" CompileTime="2" CompileCPU="2" CompileMemory="504">
+						<MemoryGrantInfo SerialRequiredMemory="0" SerialDesiredMemory="0" GrantedMemory="0" MaxUsedMemory="0">
+						</MemoryGrantInfo>
+						<OptimizerHardwareDependentProperties EstimatedAvailableMemoryGrant="418954" EstimatedPagesCached="418954" EstimatedAvailableDegreeOfParallelism="8" MaxCompileMemory="29386488">
+						</OptimizerHardwareDependentProperties>
+						<OptimizerStatsUsage>
+							<StatisticsInfo LastUpdate="2023-12-08T02:15:06.15" ModificationCount="0" SamplingPercent="2.39032" Statistics="[IX_Customers_ProfileId_Locked]" Table="[Customers]" Schema="[dbo]" Database="[EFC_Contains_Json_Regression]">
+							</StatisticsInfo>
+							<StatisticsInfo LastUpdate="2023-12-08T02:10:13.14" ModificationCount="0" SamplingPercent="2.37776" Statistics="[_WA_Sys_00000004_49C3F6B7]" Table="[Customers]" Schema="[dbo]" Database="[EFC_Contains_Json_Regression]">
+							</StatisticsInfo>
+							<StatisticsInfo LastUpdate="2023-12-08T02:02:27.93" ModificationCount="0" SamplingPercent="100" Statistics="[PK_Profiles]" Table="[Profiles]" Schema="[dbo]" Database="[EFC_Contains_Json_Regression]">
+							</StatisticsInfo>
+							<StatisticsInfo LastUpdate="2023-12-08T02:10:13.07" ModificationCount="0" SamplingPercent="2.39032" Statistics="[IX_Customers_LastEdited]" Table="[Customers]" Schema="[dbo]" Database="[EFC_Contains_Json_Regression]">
+							</StatisticsInfo>
+							<StatisticsInfo LastUpdate="2023-12-08T02:09:53.33" ModificationCount="21" SamplingPercent="2.29386" Statistics="[PK_Customers]" Table="[Customers]" Schema="[dbo]" Database="[EFC_Contains_Json_Regression]">
+							</StatisticsInfo>
+						</OptimizerStatsUsage>
+						<QueryTimeStats ElapsedTime="3" CpuTime="3">
+						</QueryTimeStats>
+						<RelOp NodeId="0" PhysicalOp="Top" LogicalOp="Top" EstimateRows="100" EstimateIO="0" EstimateCPU="1e-05" AvgRowSize="4047" EstimatedTotalSubtreeCost="25.4776" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+							<OutputList>
+								<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+								</ColumnReference>
+								<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="LastEdited">
+								</ColumnReference>
+								<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Name15">
+								</ColumnReference>
+							</OutputList>
+							<RunTimeInformation>
+								<RunTimeCountersPerThread Thread="0" ActualRows="25" Batches="0" ActualElapsedms="3" ActualCPUms="3" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row">
+								</RunTimeCountersPerThread>
+							</RunTimeInformation>
+							<Top RowCount="0" IsPercent="0" WithTies="0">
+								<OffsetExpression>
+									<ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[@__p_1],0)">
+										<Identifier>
+											<ColumnReference Column="ConstExpr1003">
+												<ScalarOperator>
+													<Convert DataType="bigint" Style="0" Implicit="1">
+														<ScalarOperator>
+															<Identifier>
+																<ColumnReference Column="@__p_1">
+																</ColumnReference>
+															</Identifier>
+														</ScalarOperator>
+													</Convert>
+												</ScalarOperator>
+											</ColumnReference>
+										</Identifier>
+									</ScalarOperator>
+								</OffsetExpression>
+								<TopExpression>
+									<ScalarOperator ScalarString="CONVERT_IMPLICIT(bigint,[@__p_2],0)">
+										<Identifier>
+											<ColumnReference Column="ConstExpr1002">
+												<ScalarOperator>
+													<Convert DataType="bigint" Style="0" Implicit="1">
+														<ScalarOperator>
+															<Identifier>
+																<ColumnReference Column="@__p_2">
+																</ColumnReference>
+															</Identifier>
+														</ScalarOperator>
+													</Convert>
+												</ScalarOperator>
+											</ColumnReference>
+										</Identifier>
+									</ScalarOperator>
+								</TopExpression>
+								<RelOp NodeId="1" PhysicalOp="Nested Loops" LogicalOp="Inner Join" EstimateRows="100" EstimateRowsWithoutRowGoal="24818.6" EstimateIO="0" EstimateCPU="2.96834" AvgRowSize="4047" EstimatedTotalSubtreeCost="25.4776" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+									<OutputList>
+										<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+										</ColumnReference>
+										<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="LastEdited">
+										</ColumnReference>
+										<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Name15">
+										</ColumnReference>
+									</OutputList>
+									<RunTimeInformation>
+										<RunTimeCountersPerThread Thread="0" ActualRows="25" Batches="0" ActualElapsedms="3" ActualCPUms="3" ActualEndOfScans="0" ActualExecutions="1" ActualExecutionMode="Row">
+										</RunTimeCountersPerThread>
+									</RunTimeInformation>
+									<NestedLoops Optimized="0">
+										<OuterReferences>
+											<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+											</ColumnReference>
+										</OuterReferences>
+										<RelOp NodeId="2" PhysicalOp="Nested Loops" LogicalOp="Inner Join" EstimateRows="2861.27" EstimateRowsWithoutRowGoal="710129" EstimateIO="0" EstimateCPU="7.91961" AvgRowSize="4051" EstimatedTotalSubtreeCost="24.9999" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+											<OutputList>
+												<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+												</ColumnReference>
+												<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+												</ColumnReference>
+												<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="LastEdited">
+												</ColumnReference>
+												<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Name15">
+												</ColumnReference>
+											</OutputList>
+											<RunTimeInformation>
+												<RunTimeCountersPerThread Thread="0" ActualRows="155" Batches="0" ActualElapsedms="3" ActualCPUms="3" ActualEndOfScans="0" ActualExecutions="1" ActualExecutionMode="Row">
+												</RunTimeCountersPerThread>
+											</RunTimeInformation>
+											<NestedLoops Optimized="0" WithOrderedPrefetch="1">
+												<OuterReferences>
+													<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+													</ColumnReference>
+													<ColumnReference Column="Expr1004">
+													</ColumnReference>
+												</OuterReferences>
+												<RelOp NodeId="4" PhysicalOp="Index Scan" LogicalOp="Index Scan" EstimateRows="7633.96" EstimateRowsWithoutRowGoal="1.89464e+06" EstimatedRowsRead="1.89464e+06" EstimateIO="9.11646" EstimateCPU="2.08426" AvgRowSize="19" EstimatedTotalSubtreeCost="0.0483943" TableCardinality="1.89464e+06" Parallel="0" EstimateRebinds="0" EstimateRewinds="0" EstimatedExecutionMode="Row">
+													<OutputList>
+														<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+														</ColumnReference>
+														<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="LastEdited">
+														</ColumnReference>
+													</OutputList>
+													<RunTimeInformation>
+														<RunTimeCountersPerThread Thread="0" ActualRows="316" Batches="0" ActualElapsedms="1" ActualCPUms="1" ActualScans="1" ActualLogicalReads="25" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="316" ActualEndOfScans="0" ActualExecutions="1" ActualExecutionMode="Row">
+														</RunTimeCountersPerThread>
+													</RunTimeInformation>
+													<IndexScan Ordered="1" ScanDirection="BACKWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+														<DefinedValues>
+															<DefinedValue>
+																<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+																</ColumnReference>
+															</DefinedValue>
+															<DefinedValue>
+																<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="LastEdited">
+																</ColumnReference>
+															</DefinedValue>
+														</DefinedValues>
+														<Object Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Index="[IX_Customers_LastEdited]" Alias="[c]" IndexKind="NonClustered" Storage="RowStore">
+														</Object>
+													</IndexScan>
+												</RelOp>
+												<RelOp NodeId="6" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="0.37476" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="4039" EstimatedTotalSubtreeCost="24.9196" TableCardinality="1.89464e+06" Parallel="0" EstimateRebinds="7633.95" EstimateRewinds="0" EstimatedExecutionMode="Row">
+													<OutputList>
+														<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+														</ColumnReference>
+														<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Name15">
+														</ColumnReference>
+													</OutputList>
+													<RunTimeInformation>
+														<RunTimeCountersPerThread Thread="0" ActualRows="155" Batches="0" ActualElapsedms="1" ActualCPUms="1" ActualScans="0" ActualLogicalReads="1180" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="316" ActualEndOfScans="161" ActualExecutions="316" ActualExecutionMode="Row">
+														</RunTimeCountersPerThread>
+													</RunTimeInformation>
+													<IndexScan Lookup="1" Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+														<DefinedValues>
+															<DefinedValue>
+																<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+																</ColumnReference>
+															</DefinedValue>
+															<DefinedValue>
+																<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Name15">
+																</ColumnReference>
+															</DefinedValue>
+														</DefinedValues>
+														<Object Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Index="[PK_Customers]" Alias="[c]" TableReferenceId="-1" IndexKind="Clustered" Storage="RowStore">
+														</Object>
+														<SeekPredicates>
+															<SeekPredicateNew>
+																<SeekKeys>
+																	<Prefix ScanType="EQ">
+																		<RangeColumns>
+																			<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+																			</ColumnReference>
+																		</RangeColumns>
+																		<RangeExpressions>
+																			<ScalarOperator ScalarString="[EFC_Contains_Json_Regression].[dbo].[Customers].[Id] as [c].[Id]">
+																				<Identifier>
+																					<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="Id">
+																					</ColumnReference>
+																				</Identifier>
+																			</ScalarOperator>
+																		</RangeExpressions>
+																	</Prefix>
+																</SeekKeys>
+															</SeekPredicateNew>
+														</SeekPredicates>
+														<Predicate>
+															<ScalarOperator ScalarString="[EFC_Contains_Json_Regression].[dbo].[Customers].[ProfileId] as [c].[ProfileId]&gt;=(231) AND [EFC_Contains_Json_Regression].[dbo].[Customers].[ProfileId] as [c].[ProfileId]&lt;=(341)">
+																<Logical Operation="AND">
+																	<ScalarOperator>
+																		<Compare CompareOp="GE">
+																			<ScalarOperator>
+																				<Identifier>
+																					<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+																					</ColumnReference>
+																				</Identifier>
+																			</ScalarOperator>
+																			<ScalarOperator>
+																				<Const ConstValue="(231)">
+																				</Const>
+																			</ScalarOperator>
+																		</Compare>
+																	</ScalarOperator>
+																	<ScalarOperator>
+																		<Compare CompareOp="LE">
+																			<ScalarOperator>
+																				<Identifier>
+																					<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+																					</ColumnReference>
+																				</Identifier>
+																			</ScalarOperator>
+																			<ScalarOperator>
+																				<Const ConstValue="(341)">
+																				</Const>
+																			</ScalarOperator>
+																		</Compare>
+																	</ScalarOperator>
+																</Logical>
+															</ScalarOperator>
+														</Predicate>
+													</IndexScan>
+												</RelOp>
+											</NestedLoops>
+										</RelOp>
+										<RelOp NodeId="7" PhysicalOp="Clustered Index Seek" LogicalOp="Clustered Index Seek" EstimateRows="1" EstimatedRowsRead="1" EstimateIO="0.003125" EstimateCPU="0.0001581" AvgRowSize="11" EstimatedTotalSubtreeCost="0.461124" TableCardinality="350" Parallel="0" EstimateRebinds="2800" EstimateRewinds="95.8957" EstimatedExecutionMode="Row">
+											<OutputList>
+											</OutputList>
+											<RunTimeInformation>
+												<RunTimeCountersPerThread Thread="0" ActualRows="25" Batches="0" ActualElapsedms="0" ActualCPUms="0" ActualScans="0" ActualLogicalReads="310" ActualPhysicalReads="0" ActualReadAheads="0" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobReadAheads="0" ActualRowsRead="155" ActualEndOfScans="130" ActualExecutions="155" ActualExecutionMode="Row">
+												</RunTimeCountersPerThread>
+											</RunTimeInformation>
+											<IndexScan Ordered="1" ScanDirection="FORWARD" ForcedIndex="0" ForceSeek="0" ForceScan="0" NoExpandHint="0" Storage="RowStore">
+												<DefinedValues>
+												</DefinedValues>
+												<Object Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Profiles]" Index="[PK_Profiles]" Alias="[p]" IndexKind="Clustered" Storage="RowStore">
+												</Object>
+												<SeekPredicates>
+													<SeekPredicateNew>
+														<SeekKeys>
+															<Prefix ScanType="EQ">
+																<RangeColumns>
+																	<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Profiles]" Alias="[p]" Column="Id">
+																	</ColumnReference>
+																</RangeColumns>
+																<RangeExpressions>
+																	<ScalarOperator ScalarString="[EFC_Contains_Json_Regression].[dbo].[Customers].[ProfileId] as [c].[ProfileId]">
+																		<Identifier>
+																			<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Customers]" Alias="[c]" Column="ProfileId">
+																			</ColumnReference>
+																		</Identifier>
+																	</ScalarOperator>
+																</RangeExpressions>
+															</Prefix>
+														</SeekKeys>
+													</SeekPredicateNew>
+												</SeekPredicates>
+												<Predicate>
+													<ScalarOperator ScalarString="[EFC_Contains_Json_Regression].[dbo].[Profiles].[Id] as [p].[Id]=(231) OR [EFC_Contains_Json_Regression].[dbo].[Profiles].[Id] as [p].[Id]=(258) OR [EFC_Contains_Json_Regression].[dbo].[Profiles].[Id] as [p].[Id]=(341)">
+														<Logical Operation="OR">
+															<ScalarOperator>
+																<Compare CompareOp="EQ">
+																	<ScalarOperator>
+																		<Identifier>
+																			<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Profiles]" Alias="[p]" Column="Id">
+																			</ColumnReference>
+																		</Identifier>
+																	</ScalarOperator>
+																	<ScalarOperator>
+																		<Const ConstValue="(231)">
+																		</Const>
+																	</ScalarOperator>
+																</Compare>
+															</ScalarOperator>
+															<ScalarOperator>
+																<Compare CompareOp="EQ">
+																	<ScalarOperator>
+																		<Identifier>
+																			<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Profiles]" Alias="[p]" Column="Id">
+																			</ColumnReference>
+																		</Identifier>
+																	</ScalarOperator>
+																	<ScalarOperator>
+																		<Const ConstValue="(258)">
+																		</Const>
+																	</ScalarOperator>
+																</Compare>
+															</ScalarOperator>
+															<ScalarOperator>
+																<Compare CompareOp="EQ">
+																	<ScalarOperator>
+																		<Identifier>
+																			<ColumnReference Database="[EFC_Contains_Json_Regression]" Schema="[dbo]" Table="[Profiles]" Alias="[p]" Column="Id">
+																			</ColumnReference>
+																		</Identifier>
+																	</ScalarOperator>
+																	<ScalarOperator>
+																		<Const ConstValue="(341)">
+																		</Const>
+																	</ScalarOperator>
+																</Compare>
+															</ScalarOperator>
+														</Logical>
+													</ScalarOperator>
+												</Predicate>
+											</IndexScan>
+										</RelOp>
+									</NestedLoops>
+								</RelOp>
+							</Top>
+						</RelOp>
+						<ParameterList>
+							<ColumnReference Column="@__p_1" ParameterDataType="int" ParameterRuntimeValue="(0)">
+							</ColumnReference>
+							<ColumnReference Column="@__p_2" ParameterDataType="int" ParameterRuntimeValue="(25)">
+							</ColumnReference>
+						</ParameterList>
+					</QueryPlan>
+				</StmtSimple>
+			</Statements>
+		</Batch>
+	</BatchSequence>
+</ShowPlanXML>
